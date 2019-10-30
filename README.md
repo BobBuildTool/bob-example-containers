@@ -3,6 +3,8 @@
 This repository uses the [basement](https://github.com/BobBuildTool/basement)
 recipes to build a lighttpd container.
 
+[![Build Status](https://ci.bobbuildtool.dev/jenkins/buildStatus/icon?job=example-containers-containers__lighttpd)](https://ci.bobbuildtool.dev/jenkins/job/example-containers-containers__lighttpd/)
+
 # Prerequisites
 
 * A x86_64 system with the regular development tools installed (gcc, make,
