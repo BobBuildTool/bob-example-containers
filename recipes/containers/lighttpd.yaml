@@ -1,22 +1,6 @@
-root: True
+inherit: ["basement::rootrecipe"]
 
 depends:
-    # define host environment
-    -
-        name: devel::sandbox
-        use: [sandbox]
-        forward: True
-    -
-        name: devel::sandbox-toolchain
-        use: [environment, tools]
-        forward: True
-
-    # some required host tools
-    -
-        name: devel::pkg-config
-        use: [tools]
-        forward: True
-
     # target toolchain
     -
         name: devel::cross-toolchain-x86_64-linux-gnu
