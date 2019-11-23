@@ -39,5 +39,36 @@ buildScript: |
     lighttpd:x:33:
     EOF
 
-packageScript: |
-    cp -a $1/* .
+
+multiPackage:
+    "":
+        packageScript: |
+            cp -a $1/* .
+
+    image:
+        buildTools: [squashfs-tools]
+        buildScript: |
+            # Remove username and group because the systemd.service already
+            # takes care of this.
+            sed -i -e '/server.username/d' -e '/server.groupname/d' \
+                etc/lighttpd/lighttpd.conf
+
+            # See https://systemd.io/PORTABLE_SERVICES.html
+            mkdir -p etc/systemd/system
+            install -m 644 $<<lighttpd/lighttpd.service>> \
+                            etc/systemd/system/lighttpd.service
+            install -m 644 $<<lighttpd/lighttpd.socket>> \
+                            etc/systemd/system/lighttpd.socket
+            touch etc/machine-id
+            ln -s ../usr/lib/os-release etc/os-release
+            touch etc/resolv.conf
+            mkdir -p proc sys dev run tmp usr/lib var/tmp
+            cat >usr/lib/os-release <<EOF
+            NAME="lighttpd"
+            PRETTY_NAME="Bob lighttpd container example"
+            ID=linux
+            HOME_URL="https://github.com/BobBuildTool/bob-example-containers"
+            EOF
+
+        packageScript: |
+            mksquashfs $1 lighttpd.raw
