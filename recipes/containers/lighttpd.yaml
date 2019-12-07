@@ -39,6 +39,9 @@ buildScript: |
     lighttpd:x:33:
     EOF
 
+    # Default landing page
+    mkdir -p srv/www
+    install -m 644 $<<lighttpd/index.html>> srv/www/index.html
 
 multiPackage:
     "":

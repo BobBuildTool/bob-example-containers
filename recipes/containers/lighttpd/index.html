@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <title>lighttpd works</title>
+ </head>
+ <body>
+  <h1>It works!</h1>
+  Looks like the lighttpd service is working.
+  <h1>Configuration needed</h1>
+  <h2>Systemd portable service</h2>
+  In order to serve something useful with the portable lighttpd service
+  you must bind the document root directory to /srv/www. This done by
+  adding a drop-in with a <code>BindReadOnlyPaths=</code>, e.g.:
+<pre>
+# systemctl edit lighttpd.service
+[Service]
+BindReadOnlyPaths=&lt;your-html-dir&gt;:/srv/www
+</pre>
+  Then restart the service and you should see your documents.
+  <h2>Docker container</h2>
+  When running the docker container you should add the proper <code>-v</code>
+  option to the command line, e.g.:
+<pre>
+$ docker run -v &lt;your-html-dir&gt;:/srv/www lighttpd ...
+</pre>
+ </body>
+</html>
+
