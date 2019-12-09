@@ -45,6 +45,11 @@ buildScript: |
 
 multiPackage:
     "":
+        buildScript: |
+            # PID file
+            mkdir -p run/lighttpd
+            touch run/lighttpd/lighttpd.pid
+
         packageScript: |
             cp -a $1/* .
 
