@@ -27,21 +27,41 @@ example](https://github.com/BobBuildTool/bob-example-embedded).
 
 # How to build
 
-Clone the recipes and build them with Bob:
+First of all you have to clone the recipes and change to the checked-out
+directory:
 
     $ git clone https://github.com/BobBuildTool/bob-example-containers.git \
 	    --recurse-submodules
     $ cd bob-example-containers
+
+The next steps depend on what you want to build.
+
+## Docker Container
+
+These recipes can build a minimal container image that has solely lighttpd and
+the required dependencies installed by running the following command:
+
+    $ # Still in the bob-example-containers directory
     $ bob build containers::lighttpd
 
-These recipes build a minimal container image that has solely lighttpd and the
-required dependencies installed.
+## Systemd Portable Service
+
+These recipes can also provide a systemd portable service that can be attached
+with `portablectl` by issuing the following command:
+
+    $ # Still in the bob-example-containers directory
+    $ bob build containers::lighttpd-image
 
 # How to use
 
+Again, usage of the build products depends on the chosen target.
+
+## Docker Container
+
 To use it you have to import it in Docker:
 
-    $ # Still in the bob-example-containers directory
+    $ # Still in the bob-example-containers directory after building
+    $ # containers::lighttpd
     $ tar -C $(bob query-path -f '{dist}' --release containers::lighttpd) -c . \
         | docker import - lighttpd
 
@@ -52,6 +72,20 @@ Now you can serve any host directory with the lighttpd in the image:
         -m /usr/lib/lighttpd
 
 This will expose the lighttpd at port 8080 on your host.
+
+## Systemd Portable Service
+
+First you have to import the portable service:
+
+    $ # Still in the bob-example-containers directory after building
+    $ # containers::lighttpd-image
+    $ portablectl attach $(bob query-path -f '{dist}' --release containers::lighttpd-image)/lighttpd.raw
+
+Now you can start the lighttpd as any other systemd service on your host:
+
+    $ systemctl start lighttpd.service
+
+lighttpd should now listen on port 80.
 
 # Contributions
 

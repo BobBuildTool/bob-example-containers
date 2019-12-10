@@ -1,0 +1,8 @@
+[Unit]
+Description=lighttpd socket
+
+[Socket]
+ListenStream=80
+
+[Install]
+WantedBy=sockets.target

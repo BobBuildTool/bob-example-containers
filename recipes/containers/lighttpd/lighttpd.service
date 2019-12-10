@@ -1,0 +1,20 @@
+[Unit]
+Description=A secure, fast, compliant and very flexible web-server
+After=syslog.target network.target lighttpd.socket
+Requires=lighttpd.socket
+
+
+[Service]
+Type=simple
+PIDFile=/run/lighttpd/lighttpd.pid
+ExecStartPre=/usr/sbin/lighttpd -tt -f /etc/lighttpd/lighttpd.conf
+ExecStart=/usr/sbin/lighttpd -D -f /etc/lighttpd/lighttpd.conf
+ExecReload=/bin/kill -USR1 $MAINPID
+Restart=on-failure
+
+User=lighttpd
+Group=lighttpd
+DynamicUser=yes
+
+RuntimeDirectory=lighttpd
+LogsDirectory=lighttpd
