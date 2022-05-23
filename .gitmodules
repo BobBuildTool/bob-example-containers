@@ -1,3 +1,6 @@
 [submodule "layers/basement"]
 	path = layers/basement
 	url = https://github.com/BobBuildTool/basement.git
+[submodule "layers/basement-gnu-linux"]
+	path = layers/basement-gnu-linux
+	url = https://github.com/BobBuildTool/basement-gnu-linux.git

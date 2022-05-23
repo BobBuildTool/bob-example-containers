@@ -1,6 +1,12 @@
 inherit: ["basement::rootrecipe"]
 
 depends:
+    # tools
+    -
+        name: devel::squashfs-tools
+        use: [tools]
+        forward: True
+
     # target toolchain
     -
         name: devel::cross-toolchain-x86_64-linux-gnu

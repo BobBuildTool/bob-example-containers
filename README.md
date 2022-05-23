@@ -21,8 +21,7 @@ example](https://github.com/BobBuildTool/bob-example-embedded).
 
 * A `x86_64` system with the regular development tools installed (GCC, make,
   Perl, ...)
-* Bleeding edge [Bob Build Tool](https://github.com/BobBuildTool/bob) (see
-  [below](#why-bleeding-edge))
+* [Bob Build Tool](https://github.com/BobBuildTool/bob)
 * Patience :coffee:
 
 # How to build
@@ -96,10 +95,3 @@ feel free to open up a pull request and ask for help.
 Currently planned extension are:
 
 * [ ] Support generating more image formats
-
-# Why bleeding edge
-
-The example uses Bob recipe layers that aren't currently available within a Bob
-release because one goal of it is testing the new feature intensively. Bob's
-next release will likely include layers so you won't have to install the
-bleeding edge version anymore.
