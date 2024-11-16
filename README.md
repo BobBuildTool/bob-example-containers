@@ -26,12 +26,15 @@ example](https://github.com/BobBuildTool/bob-example-embedded).
 
 # How to build
 
-First of all you have to clone the recipes and change to the checked-out
+First of all, you have to clone the recipes and change to the checked-out
 directory:
 
-    $ git clone https://github.com/BobBuildTool/bob-example-containers.git \
-	    --recurse-submodules
+    $ git clone https://github.com/BobBuildTool/bob-example-containers.git
     $ cd bob-example-containers
+
+Then the layers that this project depends on need to be fetched.
+
+    $ bob layers update
 
 The next steps depend on what you want to build.
 

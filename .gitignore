@@ -1,4 +1,6 @@
 .bob*
 /dev/
 /work/
+/layers/basement/
+/layers/basement-gnu-linux/
 user.yaml
