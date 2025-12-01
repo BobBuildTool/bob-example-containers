@@ -1,7 +1,5 @@
 # Bob Containers Example
 
-[![Build Status](https://ci.bobbuildtool.dev/jenkins/buildStatus/icon?job=example-containers-containers__lighttpd)](https://ci.bobbuildtool.dev/jenkins/job/example-containers-containers__lighttpd/)
-
 This repository is meant as an example of how to build a complete Linux image
 with Bob that can be used as-is or with minimal changes for various uses, such
 as a Docker container, as a virtual machine, on a SD card in your single board
@@ -44,7 +42,7 @@ These recipes can build a minimal container image that has solely lighttpd and
 the required dependencies installed by running the following command:
 
     $ # Still in the bob-example-containers directory
-    $ bob build containers::lighttpd
+    $ bob build containers::lighttpd -j
 
 ## Systemd Portable Service
 
@@ -52,7 +50,7 @@ These recipes can also provide a systemd portable service that can be attached
 with `portablectl` by issuing the following command:
 
     $ # Still in the bob-example-containers directory
-    $ bob build containers::lighttpd-image
+    $ bob build containers::lighttpd-image -j
 
 # How to use
 
