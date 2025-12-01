@@ -1,10 +1,10 @@
-bobMinimumVersion: "0.25"
+bobMinimumVersion: "1.1"
 layers:
     - name: basement-gnu-linux
       scm: git
       url: https://github.com/BobBuildTool/basement-gnu-linux.git
-      commit: b994fa979e978e29bad78450bbbf684849fa44ab
+      commit: c1d98bf23f1f86bf37220ff956dbccd5094f66b9
     - name: basement
       scm: git
       url: https://github.com/BobBuildTool/basement.git
-      commit: c281a0ecdb46939386726f65c6308cdf0436b1a6
+      commit: b79927c309a08bfd6daed00385a88576bad5310d
